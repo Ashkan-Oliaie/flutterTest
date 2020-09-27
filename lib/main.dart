@@ -1,24 +1,22 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:mosharekatha_flutter/Screens/InitialScreens/ExaReducer.dart';
 import 'package:mosharekatha_flutter/Screens/InitialScreens/Loading.dart';
 import 'package:mosharekatha_flutter/Screens/InitialScreens/Register.dart';
 import 'package:mosharekatha_flutter/Screens/InitialScreens/Verify.dart';
+import 'package:mosharekatha_flutter/Screens/RouteGenerator.dart';
 import 'package:mosharekatha_flutter/UI/Form/CustomInput.dart';
 
 import 'package:mosharekatha_flutter/UI/Touchable.dart';
 
 void main() {
   runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
     // title: 'first page',
     // home: FirstPage(),
     initialRoute: '/',
-    routes:{
-      '/':(context)=>Loading(),
-      '/register':(context)=>Register(),
-      '/verify':(context)=>Verify(),
-
-    },
+   onGenerateRoute: Router.generateRoute,
   ));
 }
 
@@ -50,6 +48,7 @@ class _FullState extends State<Full> {
   @override
   Widget build(BuildContext context) {
     return Container(
+
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         color: Colors.white10,
@@ -60,6 +59,7 @@ class _FullState extends State<Full> {
               widthFactor: 0.45,
               heightFactor: 0.45,
               child: Material(
+
                 color:Colors.green,
               borderRadius:BorderRadius.all(Radius.circular(200)),
                 child:Container(
