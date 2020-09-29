@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Typo extends StatefulWidget {
+
+
   Typo(
       {Key key,
       this.text,
@@ -14,6 +16,7 @@ class Typo extends StatefulWidget {
   bool bold;
   Color color;
   int size;
+  String body;
 
   @override
   _LoadingState createState() => _LoadingState();

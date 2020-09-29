@@ -1,6 +1,13 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mosharekatha_flutter/Bloc/Bloc/MainBloc.dart';
+import 'package:mosharekatha_flutter/Bloc/MainStore.dart';
+import 'package:mosharekatha_flutter/Bloc/Observer.dart';
+import 'package:mosharekatha_flutter/Bloc/States/MainState.dart';
+import 'package:mosharekatha_flutter/Bloc/States/UserState.dart';
+import 'package:mosharekatha_flutter/Loading/loading_bloc.dart';
 import 'package:mosharekatha_flutter/Screens/InitialScreens/ExaReducer.dart';
 import 'package:mosharekatha_flutter/Screens/InitialScreens/Loading.dart';
 import 'package:mosharekatha_flutter/Screens/InitialScreens/Register.dart';
@@ -8,22 +15,97 @@ import 'package:mosharekatha_flutter/Screens/InitialScreens/Verify.dart';
 import 'package:mosharekatha_flutter/Screens/RouteGenerator.dart';
 import 'package:mosharekatha_flutter/UI/Form/CustomInput.dart';
 
+
+
 import 'package:mosharekatha_flutter/UI/Touchable.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:redux/redux.dart';
+
 
 void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    // title: 'first page',
-    // home: FirstPage(),
-    initialRoute: '/',
-   onGenerateRoute: Router.generateRoute,
-  ));
+  Bloc.observer = CounterObserver();
+  runApp(MyApp());
 }
 
 
 
+// enum Actions { Increment }
+//
+//
+// int counterReducer(int state, dynamic action) {
+//   if (action == Actions.Increment) {
+//     return state + 1;
+//   }
+//
+//   return state;
+// }
+//
+// void main() {
+//   final store = Store<int>(counterReducer, initialState: 0);
+//
+//   runApp(FlutterReduxApp(
+//     title: 'Flutter Redux Demo',
+//     store: store,
+//   ));
+// }
+//
+//
+// class FlutterReduxApp extends StatelessWidget {
+//   final Store<int> store;
+//   final String title;
+//
+//   FlutterReduxApp({Key key, this.store, this.title}) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     // The StoreProvider should wrap your MaterialApp or WidgetsApp. This will
+//     // ensure all routes have access to the store.
+//     return StoreProvider<int>(
+//       // Pass the store to the StoreProvider. Any ancestor `StoreConnector`
+//       // Widgets will find and use this value as the `Store`.
+//       store: store,
+//       child: MaterialApp(
+//         debugShowCheckedModeBanner: false,
+//         initialRoute: '/',
+//         onGenerateRoute: Router.generateRoute,
+//       ),
+//     );
+//   }
+// }
 
 
+
+
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => MainBloc(UserState(token:'initial token',year:'palanag',userInfo:new UserInfo(name:'Guest',family:'',phone:'',code:''))),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/',
+        onGenerateRoute: Router.generateRoute,
+      ),
+    );
+  }
+}
+
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return BlocProvider(
+//       create: (context) => LoadingBloc(0),
+//       child: MaterialApp(
+//         debugShowCheckedModeBanner: false,
+//         initialRoute: '/',
+//         onGenerateRoute: Router.generateRoute,
+//       ),
+//     );
+//   }
+// }
+//
 
 
 
@@ -103,7 +185,6 @@ class _FullState extends State<Full> {
                         ],
                       ),
                     ),
-
                     Touchable()
                   ],
                 ),

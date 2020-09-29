@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mosharekatha_flutter/Screens/Home/PostBloc.dart';
 import 'package:mosharekatha_flutter/Screens/Home/Posts.dart';
+import 'package:mosharekatha_flutter/Screens/Home/ReduxPosts.dart';
 import 'package:mosharekatha_flutter/Screens/InitialScreens/Hooks.dart';
 
 import 'package:mosharekatha_flutter/Screens/InitialScreens/Loading.dart';
@@ -26,6 +28,10 @@ class Router{
 
       case '/posts':
         return MaterialPageRoute(builder:(_)=>Posts());
+      case '/postsBloc':
+        return MaterialPageRoute(builder:(_)=>PostBloc());
+      case '/reduxPosts':
+        return MaterialPageRoute(builder:(_)=>ReduxPosts());
       default:
         return ErrorPage();
     }
