@@ -4,6 +4,9 @@ import 'package:mosharekatha_flutter/Screens/InitialScreens/Hooks.dart';
 class Register extends StatefulWidget {
 
 
+
+
+
   Register({Key key, @required this.duration,this.text})
       : assert(duration != null),
         super(key: key);

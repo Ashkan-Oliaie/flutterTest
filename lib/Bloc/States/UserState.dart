@@ -2,24 +2,19 @@ import 'package:equatable/equatable.dart';
 import 'package:mosharekatha_flutter/Bloc/States/MainState.dart';
 
 class UserInfo  {
-  String name='asd' ;
-  String family='asd' ;
-  String phone='asd' ;
-  String code='asd' ;
+  String name='asd';
+  String family='asd';
+  String phone='asd';
+  String code='asd';
 
-  UserInfo(
-      {this.name ='asd',  this.family='asd' ,  this.phone='asd' ,this.code = 'asd'});
+  UserInfo({this.name ='asd',  this.family='asd' ,  this.phone='asd' ,this.code = 'asd'});
 }
 
-class UserState  {
-
-
-
+class UserState extends Equatable {
   String token;
   String userStatus;
   String year;
   UserInfo  userInfo;
-
 
 
   UserState(

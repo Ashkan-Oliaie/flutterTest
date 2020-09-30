@@ -26,11 +26,17 @@ class _LoadingState extends State<Loading> {
 
 
 
+
     return Scaffold(
         body: SafeArea(
-            child: BlocBuilder<MainBloc, UserState>(
+            child: BlocBuilder<MainBloc, MainState>(
+                buildWhen: (previousState, state) {
+                 return previousState.user_state.token!=state.user_state.token;
+                },
               builder:(context,state){
-                print(state.userInfo);
+                print('rerender loading');
+
+
                 return Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -47,16 +53,16 @@ class _LoadingState extends State<Loading> {
                               },
                               child: Text('submit')),
                         ),
-                        Typo(text:state.token,size:20,color:Colors.green),
-                        Typo(text:state.userStatus,size:20,color:Colors.green),
-                        Typo(text:state.year,size:20,color:Colors.green),
+                        Typo(text:state.user_state.token,size:20,color:Colors.green),
+                        Typo(text:state.user_state.userStatus,size:20,color:Colors.green),
+                        Typo(text:state.user_state.year,size:20,color:Colors.green),
 
                         Padding(
                           padding: const EdgeInsets.all(15),
                           child: Column(
                             children: [
-                              Typo(text: state.userInfo.name  ,size:20,color:Colors.green),
-                              Typo(text: state.userInfo.family  ,size:20,color:Colors.green),
+                              Typo(text: state.user_state.userInfo.name  ,size:20,color:Colors.green),
+                              Typo(text: state.user_state.userInfo.family  ,size:20,color:Colors.green),
                             ],
                           ),
                         )

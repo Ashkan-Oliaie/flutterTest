@@ -81,7 +81,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => MainBloc(UserState(token:'initial token',year:'palanag',userInfo:new UserInfo(name:'Guest',family:'',phone:'',code:''))),
+      create: (context) => MainBloc(InitialState),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         initialRoute: '/',

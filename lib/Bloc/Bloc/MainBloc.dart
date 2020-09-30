@@ -8,7 +8,7 @@ import 'package:mosharekatha_flutter/Bloc/States/UserState.dart';
 
 
 
-class MainBloc extends Bloc<MainEvent, UserState> {
+class MainBloc extends Bloc<MainEvent, MainState> {
   MainBloc(initial) : super(initial);
 
   void Login(token){
@@ -27,14 +27,14 @@ class MainBloc extends Bloc<MainEvent, UserState> {
 
 
   @override
-  Stream<UserState>  mapEventToState(MainEvent event) async* {
+  Stream<MainState>  mapEventToState(MainEvent event) async* {
 
-    if (event is TokenChange) yield state.copyWith(token:event.token);
+    if (event is TokenChange) yield state.copyWith(user_state:state.user_state.copyWith(token:event.token));
 
-    if (event is StatusChange) yield state.copyWith(userStatus:event.userStatus,token:'para');
-
-    if (event is YearChange) yield state.copyWith(year:event.year,userStatus:'USERSTATUS');
-
-    if (event is InfoChange) yield state.copyWith(userInfo:event.userInfo);
+    if (event is StatusChange) yield state.copyWith( user_state:state.user_state.copyWith(userStatus:event.userStatus,token:'para'));
+    //
+    if (event is YearChange) yield  state.copyWith(user_state:state.user_state.copyWith(year:event.year,userStatus:'USERSTATUS'));
+    //
+    if (event is InfoChange) yield state.copyWith(user_state:state.user_state.copyWith(userInfo:event.userInfo));
   }
 }

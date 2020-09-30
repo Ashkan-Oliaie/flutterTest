@@ -6,6 +6,7 @@ import 'dart:convert';
 
 class localState {
   int counter = 0;
+  int secondCounter = 0;
   int page=1;
   int pageSize=10;
   bool loading = true;
@@ -17,11 +18,6 @@ class localState {
   localState({this.counter = 0, this.localRerender = false, this.data,this.loading:true,this.page:1,this.refreshing});
 }
 
-// localState (counter,localRerender,data) {
-//   return(
-//     {counter,localRerender,data}
-//   );
-// }
 
 class IncrementCounter {
   final int counter;
@@ -58,11 +54,9 @@ class NextPage{
 
 class NormalList extends HookWidget {
   NormalList({
-    Key key,
     this.url: 'https://jsonplaceholder.typicode.com/posts',
     this.listItem,
-  })  : assert(url != null),
-        super(key: key);
+  });
 
   String url;
   var listItem;
@@ -111,16 +105,6 @@ class NormalList extends HookWidget {
       if (res.statusCode == 200) {
         // print(jsonDecode(res.body));
         var resData = jsonDecode(res.body);
-        //
-        // print(resData);
-
-        // print(res.body);
-        // print(l[0]);
-        // List posts = List.from(l).map((model)=> model);
-
-        // List data = map;
-        // print(l);
-        // print(l[0]);
         store.dispatch(SetData(data: resData));
       }
     }
@@ -129,11 +113,7 @@ class NormalList extends HookWidget {
 
 
     useEffect(() {
-
-
       var _controller = ScrollController();
-
-
       scrollListener() {
         if (_controller.offset >= _controller.position.maxScrollExtent &&
             !_controller.position.outOfRange) {
@@ -145,30 +125,16 @@ class NormalList extends HookWidget {
           print('top');
         }
       }
-
       _controller.addListener(scrollListener);
-
       controller.value=_controller;
-
-
-
-
-
       return () => {};
     }, []);
 
 
     useEffect(() {
       request();
-
-
-
       return () => {};
     }, [store.state.localRerender]);
-
-
-
-
 
 
     // Widget _viewer(data) {
