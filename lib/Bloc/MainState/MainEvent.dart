@@ -1,6 +1,6 @@
 
 import 'package:equatable/equatable.dart';
-import 'package:mosharekatha_flutter/Bloc/States/UserState.dart';
+import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/Bloc/MainState/States/UserState.dart';
 
 abstract class MainEvent extends Equatable {
   const MainEvent();

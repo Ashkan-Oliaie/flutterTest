@@ -1,11 +1,13 @@
 import 'package:equatable/equatable.dart';
-import 'package:mosharekatha_flutter/Bloc/States/UserState.dart';
+import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/Bloc/MainState/States/AppState.dart';
+import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/Bloc/MainState/States/UserState.dart';
 
 class MainState extends Equatable {
 
   UserState user_state;
+  AppState app_state;
 
-  MainState({this.user_state});
+  MainState({this.user_state,this.app_state});
 
 
   MainState copyWith({

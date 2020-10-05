@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mosharekatha_flutter/Screens/InitialScreens/ExaReducer.dart';
 import 'package:mosharekatha_flutter/Screens/InitialScreens/Hooks.dart';
-import 'package:mosharekatha_flutter/UI/Touchable.dart';
+import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/UI/Touchables/Touchable.dart';
 
 
 class Verify extends StatefulWidget {

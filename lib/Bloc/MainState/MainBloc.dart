@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:mosharekatha_flutter/Bloc/Events/MainEvent.dart';
-import 'package:mosharekatha_flutter/Bloc/States/MainState.dart';
-import 'package:mosharekatha_flutter/Bloc/States/UserState.dart';
+import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/Bloc/MainState/MainEvent.dart';
+import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/Bloc/MainState/States/MainState.dart';
+import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/Bloc/MainState/States/UserState.dart';
 
 
 

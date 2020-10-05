@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mosharekatha_flutter/Bloc/Bloc/MainBloc.dart';
-import 'package:mosharekatha_flutter/Bloc/States/MainState.dart';
-import 'package:mosharekatha_flutter/Bloc/States/UserState.dart';
+import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/Bloc/MainState/MainBloc.dart';
+import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/Bloc/MainState/States/MainState.dart';
+import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/Bloc/MainState/States/UserState.dart';
 import 'package:mosharekatha_flutter/Loading/loading_bloc.dart';
-import 'package:mosharekatha_flutter/UI/Touchable.dart';
+import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/UI/Touchables/Touchable.dart';
 import 'package:mosharekatha_flutter/UI/Typo.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

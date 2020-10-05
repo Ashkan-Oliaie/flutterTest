@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:mosharekatha_flutter/Bloc/States/MainState.dart';
+import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/Bloc/MainState/States/MainState.dart';
 
 class UserInfo  {
   String name='asd';

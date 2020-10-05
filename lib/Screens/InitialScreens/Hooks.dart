@@ -1,10 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter/material.dart';
-import 'package:mosharekatha_flutter/Bloc/Bloc/MainBloc.dart';
-import 'package:mosharekatha_flutter/Bloc/States/MainState.dart';
-import 'package:mosharekatha_flutter/Bloc/States/UserState.dart';
-import 'package:mosharekatha_flutter/UI/Touchable.dart';
+import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/Bloc/MainState/MainBloc.dart';
+import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/Bloc/MainState/States/MainState.dart';
+import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/Bloc/MainState/States/UserState.dart';
+import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/UI/Touchables/Touchable.dart';
 import 'package:mosharekatha_flutter/UI/Typo.dart';
 
 
@@ -15,8 +15,6 @@ class Hooks extends HookWidget {
       : assert(header != null),
         super(key: key);
 
-
-
   final int duration;
   final String header;
 
@@ -24,8 +22,6 @@ class Hooks extends HookWidget {
   Widget build(BuildContext context) {
 
     final counter = useState(duration);
-
-
 
 
 
@@ -48,11 +44,9 @@ class Hooks extends HookWidget {
             children: [
               Column(
                 children: [
-                  // Typo(duration.toString(),true),
                   Typo(text: 'This is your counter',bold:true,color:Colors.red),
                   Typo(text: counter.value.toString(),bold:true,color:Colors.teal),
                   Typo(text: state.user_state.token,bold:true,color:Colors.teal),
-
                 ],
               ),
 

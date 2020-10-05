@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:mosharekatha_flutter/UI/Typo.dart';
 
 class Touchable extends StatefulWidget {
-  Touchable({Key key, this.onPress:null, this.caption:'Caption', this.col:Colors.deepPurpleAccent})
+
+  Touchable({Key key, this.onPress:null,this.height:45, this.caption:'Caption', this.color:Colors.blueGrey})
       : assert(caption != null),
         super(key: key);
 
   var onPress;
   String caption;
-  Color col;
+  Color color;
+  double height;
 
   @override
   _TouchableState createState() => _TouchableState();
@@ -17,14 +20,16 @@ class _TouchableState extends State<Touchable> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: widget.height,
       width: double.infinity,
-      margin: EdgeInsets.only(left: 20, right: 20),
+      margin: EdgeInsets.only(bottom:10,left: 20, right: 20),
       child: RaisedButton(
-          color: widget.col,
+        elevation: 6,
+          color: widget.color,
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10))),
+              borderRadius: BorderRadius.all(Radius.circular(11))),
           onPressed: widget.onPress,
-          child: Text(widget.caption)),
+          child: Typo(text:widget.caption,size: 18,)),
     );
   }
 }

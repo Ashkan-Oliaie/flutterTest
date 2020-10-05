@@ -1,12 +1,11 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mosharekatha_flutter/Bloc/Bloc/MainBloc.dart';
+import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/Bloc/MainState/MainBloc.dart';
 import 'package:mosharekatha_flutter/Bloc/MainStore.dart';
 import 'package:mosharekatha_flutter/Bloc/Observer.dart';
-import 'package:mosharekatha_flutter/Bloc/States/MainState.dart';
-import 'package:mosharekatha_flutter/Bloc/States/UserState.dart';
+import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/Bloc/MainState/States/MainState.dart';
+import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/Bloc/MainState/States/UserState.dart';
+import 'package:mosharekatha_flutter/Bloc/ThemeState/ThemeBloc.dart';
 import 'package:mosharekatha_flutter/Loading/loading_bloc.dart';
 import 'package:mosharekatha_flutter/Screens/InitialScreens/ExaReducer.dart';
 import 'package:mosharekatha_flutter/Screens/InitialScreens/Loading.dart';
@@ -14,20 +13,30 @@ import 'package:mosharekatha_flutter/Screens/InitialScreens/Register.dart';
 import 'package:mosharekatha_flutter/Screens/InitialScreens/Verify.dart';
 import 'package:mosharekatha_flutter/Screens/RouteGenerator.dart';
 import 'package:mosharekatha_flutter/UI/Form/CustomInput.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
-
-
-import 'package:mosharekatha_flutter/UI/Touchable.dart';
+import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/UI/Touchables/Touchable.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:mosharekatha_flutter/UI/Typo.dart';
+import 'package:persian_fonts/persian_fonts.dart';
 import 'package:redux/redux.dart';
-
+import 'package:load/load.dart';
 
 void main() {
   Bloc.observer = CounterObserver();
-  runApp(MyApp());
+  runApp(LoadingProvider(
+      themeData: LoadingThemeData(),
+      loadingWidgetBuilder: (ctx, data) {
+        return Center(
+          child: SizedBox(
+            width: 50,
+            height: 50,
+            child: Container(child: CircularProgressIndicator()),
+          ),
+        );
+      },
+      child: MyApp()));
 }
-
-
 
 // enum Actions { Increment }
 //
@@ -73,16 +82,31 @@ void main() {
 //   }
 // }
 
-
-
-
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => MainBloc(InitialState),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => MainBloc(InitialState),
+        ),
+        BlocProvider(
+          create: (context) => ThemeBloc(InitialState),
+        ),
+      ],
       child: MaterialApp(
+        theme: ThemeData(
+          textTheme: PersianFonts.vazirTextTheme,
+        ),
+        localizationsDelegates: [
+          GlobalCupertinoLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: [
+          Locale("fa", "IR"), // OR Locale('ar', 'AE') OR Other RTL locales
+        ],
+        locale: Locale("fa", "IR"),
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
         onGenerateRoute: Router.generateRoute,
@@ -90,7 +114,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 
 // class MyApp extends StatelessWidget {
 //   @override
@@ -106,8 +129,6 @@ class MyApp extends StatelessWidget {
 //   }
 // }
 //
-
-
 
 class FirstPage extends StatelessWidget {
   @override
@@ -130,65 +151,57 @@ class _FullState extends State<Full> {
   @override
   Widget build(BuildContext context) {
     return Container(
-
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         color: Colors.white10,
-        child: Stack(
-          children:[
-            Align(
-              alignment: Alignment.bottomRight,
-              widthFactor: 0.45,
-              heightFactor: 0.45,
-              child: Material(
-
-                color:Colors.green,
-              borderRadius:BorderRadius.all(Radius.circular(200)),
-                child:Container(
-                  width:400,
-                  height:400
-                )
-              ),
-            ),
-
-            Align(
-
-
-              child: Material(
-                  color:Colors.green,
-                  borderRadius:BorderRadius.all(Radius.circular(200)),
-                  child:Container(
-                      width:400,
-                      height:400
-                  )
-              ),
-            ),
-            Center(
+        child: Stack(children: [
+          Align(
+            alignment: Alignment.bottomRight,
+            widthFactor: 0.45,
+            heightFactor: 0.45,
+            child: Material(
+                color: Colors.green,
+                borderRadius: BorderRadius.all(Radius.circular(200)),
+                child: Container(width: 400, height: 400)),
+          ),
+          Align(
+            child: Material(
+                color: Colors.green,
+                borderRadius: BorderRadius.all(Radius.circular(200)),
+                child: Container(width: 400, height: 400)),
+          ),
+          Center(
               child: Padding(
-                padding: const EdgeInsets.only(top:5,bottom:10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      height:250,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Material(
-                              elevation:5,
-                              color: Colors.white,borderRadius:BorderRadius.all(Radius.circular(100)),child: Padding(
+            padding: const EdgeInsets.only(top: 5, bottom: 10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  height: 250,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Material(
+                          elevation: 5,
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(100)),
+                          child: Padding(
                             padding: const EdgeInsets.all(7.0),
-                            child: Image.asset('images/t.jpg',width:100,height:100),
+                            child: Image.asset('images/t.jpg',
+                                width: 100, height: 100),
                           )),
-                          Texta(
-                              Icon(Icons.person,),'Phone Number'),
-                        ],
-                      ),
-                    ),
-                    Touchable()
-                  ],
+                      Texta(
+                          Icon(
+                            Icons.person,
+                          ),
+                          'Phone Number'),
+                    ],
+                  ),
                 ),
-              )),]
-        ));
+                Touchable()
+              ],
+            ),
+          )),
+        ]));
   }
 }

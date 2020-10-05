@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:persian_fonts/persian_fonts.dart';
 
 class Typo extends StatefulWidget {
 
@@ -30,6 +31,7 @@ class _LoadingState extends State<Typo> {
       widget.text,
       style: TextStyle(
           color: widget.color,
+          fontFamily: PersianFonts.Vazir.fontFamily,
           fontSize: widget.size.toDouble(),
           fontWeight: widget.bold ? FontWeight.bold : null),
     ));

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <clipPath id="clip-Artboard_11">
+      <rect width="512" height="512"/>
+    </clipPath>
+  </defs>
+  <g id="Artboard_11" data-name="Artboard – 11" clip-path="url(#clip-Artboard_11)">
+    <g id="paper" transform="translate(-0.405 -0.079)">
+      <path id="Path_77" data-name="Path 77" d="M384.462,0H192.219L172.2,256.121l20.019,255.957H384.462Z" transform="translate(0.026)" fill="#d6e6fd"/>
+      <rect id="Rectangle_11" data-name="Rectangle 11" width="192.25" height="512.079" fill="#f4f4ff"/>
+      <g id="Group_38" data-name="Group 38" transform="translate(47.846 369.487)">
+        <rect id="Rectangle_12" data-name="Rectangle 12" width="77.542" height="30.005" transform="translate(0 63.79)" fill="#a1b8d8"/>
+        <rect id="Rectangle_13" data-name="Rectangle 13" width="109.437" height="30.005" fill="#a1b8d8"/>
+      </g>
+      <g id="Group_39" data-name="Group 39" transform="translate(182.235 48.792)">
+        <path id="Path_78" data-name="Path 78" d="M257.541,48.785H192.217l-10.009,15,10.009,15h65.324Z" transform="translate(-182.207 -48.785)" fill="#6c819f"/>
+        <path id="Path_79" data-name="Path 79" d="M336.614,112.571h-144.4l-10.009,15,10.009,15h144.4Z" transform="translate(-182.207 -48.775)" fill="#6c819f"/>
+        <path id="Path_80" data-name="Path 80" d="M336.614,176.356h-144.4l-10.009,15,10.009,15h144.4Z" transform="translate(-182.207 -48.765)" fill="#6c819f"/>
+        <path id="Path_81" data-name="Path 81" d="M336.614,240.142h-144.4l-10.009,15,10.009,15h144.4Z" transform="translate(-182.207 -48.756)" fill="#6c819f"/>
+      </g>
+      <g id="Group_40" data-name="Group 40" transform="translate(47.846 48.792)">
+        <rect id="Rectangle_14" data-name="Rectangle 14" width="144.402" height="30.005" transform="translate(0 127.595)" fill="#a1b8d8"/>
+        <rect id="Rectangle_15" data-name="Rectangle 15" width="144.402" height="30.005" transform="translate(0 191.384)" fill="#a1b8d8"/>
+        <rect id="Rectangle_16" data-name="Rectangle 16" width="65.32" height="30.005" transform="translate(79.073)" fill="#a1b8d8"/>
+        <rect id="Rectangle_17" data-name="Rectangle 17" width="144.402" height="30.005" transform="translate(0 63.795)" fill="#a1b8d8"/>
+      </g>
+      <path id="Path_82" data-name="Path 82" d="M271.54,448.395l45.028-.116L512.037,252.811l-22.456-22.457L380.5,316.513Z" transform="translate(0.041 0.035)" fill="#eb7d16"/>
+      <path id="Path_83" data-name="Path 83" d="M466.894,207.668,271.423,403.138l.117,45.261L489.582,230.356Z" transform="translate(0.042 0.031)" fill="#fe9923"/>
+    </g>
+  </g>
+</svg>

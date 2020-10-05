@@ -30,6 +30,7 @@ class Texta extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
+                  
                     decoration: InputDecoration(
                         border:InputBorder.none,
                         fillColor: Colors.white,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mosharekatha_flutter/Bloc/store_bloc.dart';
 import 'package:mosharekatha_flutter/UI/List/FixedList.dart';
-import 'package:mosharekatha_flutter/UI/Touchable.dart';
+import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/UI/Touchables/Touchable.dart';
 import 'package:mosharekatha_flutter/UI/Typo.dart';
 
 class PostBloc extends StatefulWidget {
