@@ -7,6 +7,9 @@ import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/Bloc/MainS
 import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/Bloc/MainState/States/UserState.dart';
 import 'package:mosharekatha_flutter/Bloc/ThemeState/ThemeBloc.dart';
 import 'package:mosharekatha_flutter/Loading/loading_bloc.dart';
+import 'package:mosharekatha_flutter/Provider/ProviderApp.dart';
+import 'package:mosharekatha_flutter/Provider/ProviderHome.dart';
+import 'package:mosharekatha_flutter/Provider/UserProvider.dart';
 import 'package:mosharekatha_flutter/Redux/MainReducer.dart';
 import 'package:mosharekatha_flutter/Redux/QueryState/QueryActions.dart';
 
@@ -24,6 +27,7 @@ import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/UI/Touchab
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:mosharekatha_flutter/UI/Typo.dart';
 import 'package:persian_fonts/persian_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:redux/redux.dart';
 import 'package:load/load.dart';
 
@@ -41,7 +45,7 @@ void main() {
           ),
         );
       },
-      child: MyApp()));
+      child: ProviderApp()));
 }
 
 
@@ -54,6 +58,25 @@ void main() {
 //     store: reduxStore,
 //   ));
 // }
+
+
+
+class ProviderApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home : Scaffold(
+        body: MultiProvider(
+          providers: [
+            ChangeNotifierProvider(create: (_) => UserProvider()),
+            ChangeNotifierProvider(create: (_) => Prova()),
+          ],
+          child: ProviderUserHome(),
+        ),
+        ),
+      );
+  }
+}
 
 
 class FlutterReduxApp extends StatelessWidget {
@@ -147,12 +170,6 @@ class FlutterReduxApp extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
 
 class MyApp extends StatelessWidget {
   @override
