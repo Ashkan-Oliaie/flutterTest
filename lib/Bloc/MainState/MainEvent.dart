@@ -9,9 +9,24 @@ abstract class MainEvent extends Equatable {
 class TokenChange extends MainEvent {
 
 
-  final String token;
+   String token;
 
   TokenChange({this.token});
+
+  String generateToken(i){
+    return i+'2'+'feri';
+  }
+
+   void gg(){
+     List<int> nums=[2,3,4,5,3];
+     for (var i in nums){
+       print(i.toString());
+       if(i==2){
+         token='adasdas';
+       }
+       generateToken(i);
+     }
+   }
 
   @override
   List<Object> get props => [token];

@@ -7,6 +7,11 @@ import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/Bloc/MainS
 import 'file:///C:/Users/Ashlix/IdeaProjects/mosharekatha_flutter/lib/Bloc/MainState/States/UserState.dart';
 import 'package:mosharekatha_flutter/Bloc/ThemeState/ThemeBloc.dart';
 import 'package:mosharekatha_flutter/Loading/loading_bloc.dart';
+import 'package:mosharekatha_flutter/Redux/MainReducer.dart';
+import 'package:mosharekatha_flutter/Redux/QueryState/QueryActions.dart';
+
+import 'package:mosharekatha_flutter/Redux/ReduxState.dart';
+import 'package:mosharekatha_flutter/ReduxTestField.dart';
 import 'package:mosharekatha_flutter/Screens/InitialScreens/ExaReducer.dart';
 import 'package:mosharekatha_flutter/Screens/InitialScreens/Loading.dart';
 import 'package:mosharekatha_flutter/Screens/InitialScreens/Register.dart';
@@ -21,6 +26,7 @@ import 'package:mosharekatha_flutter/UI/Typo.dart';
 import 'package:persian_fonts/persian_fonts.dart';
 import 'package:redux/redux.dart';
 import 'package:load/load.dart';
+
 
 void main() {
   Bloc.observer = CounterObserver();
@@ -38,49 +44,115 @@ void main() {
       child: MyApp()));
 }
 
-// enum Actions { Increment }
-//
-//
-// int counterReducer(int state, dynamic action) {
-//   if (action == Actions.Increment) {
-//     return state + 1;
-//   }
-//
-//   return state;
-// }
-//
+
 // void main() {
-//   final store = Store<int>(counterReducer, initialState: 0);
+//   // Create your store as a final variable in a base Widget. This works better
+//   // with Hot Reload than creating it directly in the `build` function.
 //
-//   runApp(FlutterReduxApp(
+//   runApp(new FlutterReduxApp(
 //     title: 'Flutter Redux Demo',
-//     store: store,
+//     store: reduxStore,
 //   ));
 // }
-//
-//
-// class FlutterReduxApp extends StatelessWidget {
-//   final Store<int> store;
-//   final String title;
-//
-//   FlutterReduxApp({Key key, this.store, this.title}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     // The StoreProvider should wrap your MaterialApp or WidgetsApp. This will
-//     // ensure all routes have access to the store.
-//     return StoreProvider<int>(
-//       // Pass the store to the StoreProvider. Any ancestor `StoreConnector`
-//       // Widgets will find and use this value as the `Store`.
-//       store: store,
-//       child: MaterialApp(
-//         debugShowCheckedModeBanner: false,
-//         initialRoute: '/',
-//         onGenerateRoute: Router.generateRoute,
-//       ),
-//     );
-//   }
-// }
+
+
+class FlutterReduxApp extends StatelessWidget {
+  final Store<ReduxAppState> store;
+  final String title;
+
+  FlutterReduxApp({Key key, this.store, this.title}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // The StoreProvider should wrap your MaterialApp or WidgetsApp. This will
+    // ensure all routes have access to the store.
+    return new StoreProvider<ReduxAppState>(
+      // Pass the store to the StoreProvider. Any ancestor `StoreConnector`
+      // Widgets will find and use this value as the `Store`.
+      store: reduxStore,
+      child: new MaterialApp(
+        theme: new ThemeData.dark(),
+        title: title,
+        home: new Scaffold(
+          appBar: new AppBar(
+            title: new Text(title),
+          ),
+          body: new Center(
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                new Text(
+                  'You have pushed the button this many times:',
+                ),
+                Texio(),
+                // Connect the Store to a Text Widget that renders the current
+                // count.
+                //
+                // We'll wrap the Text Widget in a `StoreConnector` Widget. The
+                // `StoreConnector` will find the `Store` from the nearest
+                // `StoreProvider` ancestor, convert it into a String of the
+                // latest count, and pass that String  to the `builder` function
+                // as the `count`.
+                //
+                // Every time the button is tapped, an action is dispatched and
+                // run through the reducer. After the reducer updates the state,
+                // the Widget will be automatically rebuilt with the latest
+                // count. No need to manually manage subscriptions or Streams!
+                StoreConnector<ReduxAppState, ReduxAppState>(
+                  converter: (store) => store.state,
+                  builder: (context, state) {
+
+                    return  Column(
+                      children: [
+
+                        Row(children:state.items.map((item)=>Text(item)).toList(),),
+                        Row(children:[
+                          Typo(text:'  ${state.user_state.userStatus}  ',color: Colors.white),
+                          Typo(text:'  ${state.user_state.token}  ',color: Colors.white,)
+                        ]),
+
+                        Text(
+                          state.searchQuery ?? 'test' ,
+                          style: Theme.of(context).textTheme.display1,
+                        ),
+                      ],
+                    );
+                  },
+                )
+              ],
+            ),
+          ),
+          // Connect the Store to a FloatingActionButton. In this case, we'll
+          // use the Store to build a callback that with dispatch an Increment
+          // Action.
+          //
+          // Then, we'll pass this callback to the button's `onPressed` handler.
+          floatingActionButton:  StoreConnector<ReduxAppState, VoidCallback>(
+            converter: (store) {
+              // Return a `VoidCallback`, which is a fancy name for a function
+              // with no parameters. It only dispatches an Increment action.
+              return () => store.dispatch(ChangeQuerySearch(query: 'papaya'));
+            },
+            builder: (context, callback) {
+              return new FloatingActionButton(
+                // Attach the `callback` to the `onPressed` attribute
+                onPressed: callback,
+                tooltip: 'Increment',
+                child: new Icon(Icons.add),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
 
 class MyApp extends StatelessWidget {
   @override
@@ -154,6 +226,7 @@ class _FullState extends State<Full> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         color: Colors.white10,
+
         child: Stack(children: [
           Align(
             alignment: Alignment.bottomRight,

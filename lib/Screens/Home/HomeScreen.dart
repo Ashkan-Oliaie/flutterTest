@@ -49,7 +49,6 @@ List imgList=[1,2,3,4,5];
 
 class HomeScreen extends HookWidget {
 
-
   @override
   Widget build(BuildContext context) {
 
@@ -64,7 +63,6 @@ class HomeScreen extends HookWidget {
       print('fafa');
       return () => {};
     }, []);
-
 
 
 
@@ -163,7 +161,9 @@ class HomeScreen extends HookWidget {
                         // ),
                         child:Row(
                           children: [
-                            HomeMenuButton('اخبار',SvgPicture.asset('images/Artboard – 1.svg',width:35,height:35,),(){}),
+                            HomeMenuButton('اخبار',SvgPicture.asset('images/Artboard – 1.svg',width:35,height:35,),(){
+                              Navigator.pushNamed(context, '/news');
+                            }),
                             HomeMenuButton('اطلاعیه ها',SvgPicture.asset('images/Artboard – 2.svg',width:35,height:35,),(){}),
                             HomeMenuButton('شکایات',SvgPicture.asset('images/Artboard – 3.svg',width:35,height:35,),(){}),
                           ],

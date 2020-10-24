@@ -31,7 +31,6 @@ childRenderer(data, rerenderer, context) {
                   child: Column(
                     children: [
                       Container(
-
                         margin:EdgeInsets.only(bottom:20,left:10,right:10,top:20),
                         child: Typo(text: data['title'],size:16,bold:true,color:Colors.blueGrey),
                       ),
